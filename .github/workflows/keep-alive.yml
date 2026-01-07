@@ -1,0 +1,14 @@
+name: Keep Service Alive
+
+on:
+  schedule:
+    - cron: '*/14 * * * *'  # Runs every 14 minutes
+  workflow_dispatch:        # Allows manual triggering
+
+jobs:
+  ping_service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Backend Service
+        run: |
+          curl -I https://samptak.onrender.com/health
